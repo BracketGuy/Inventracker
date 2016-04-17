@@ -1,0 +1,38 @@
+<table  class="table table-striped table-bordered">
+  <tr>
+    <th>
+      Computer Name
+    </th>
+    <th>
+      Operating System
+    </th>
+    <th>
+      Deployment Date
+    </th>
+    <th>
+      Verification Date
+    </th>
+  </tr>
+  <% @computers.each do |computer| %>
+    <tr>
+      <td>
+        <% if computer.name == "" %>
+          <%= link_to '(not named)', controller: "computers", action: "show", id: computer %>
+        <% else %>
+          <%= link_to computer.name, controller: "computers", action: "show", id: computer %>
+        <% end %>
+      </td>
+      <td>
+        <%= computer.os %>
+      </td>
+      <td>
+        <%= computer.deployment_date%>
+      </td>
+      <td>
+        <%= computer.verification_date%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</br>
+<%= link_to "Add New Computer", {:controller => "computers", :action => "new"}, {:class => "btn btn-default"} %>
