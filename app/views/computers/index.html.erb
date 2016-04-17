@@ -12,6 +12,9 @@
     <th>
       Verification Date
     </th>
+    <th>
+      Warranty Expiration Date
+    </th>
   </tr>
   <% @computers.each do |computer| %>
     <tr>
@@ -31,6 +34,16 @@
       <td>
         <%= computer.verification_date%>
       </td>
+      <%# I want computers with expired warranties to be highlighted in red. %>
+      <% if computer.warranty_date.past? %>
+        <td class="out_of_warranty">
+          <%= computer.warranty_date%> (Expired)
+        </td>
+      <% else %>
+        <td>
+          <%= computer.warranty_date%>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

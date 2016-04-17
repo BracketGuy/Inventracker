@@ -30,8 +30,9 @@ class ComputersController < ApplicationController
                              user_id: params[:user_id],
                              os: params[:os],
                              notes: params[:notes],
-                             deployment_date: Date.civil(params[:deployment_date][:year].to_i, params[:deployment_date][:month].to_i, params[:deployment_date][:day].to_i),
-                             verification_date: Date.civil(params[:verification_date][:year].to_i, params[:verification_date][:month].to_i, params[:verification_date][:day].to_i))
+                             deployment_date: params_to_date(params,:deployment_date),
+                             verification_date: params_to_date(params,:verification_date),
+                             warranty_date: params_to_date(params,:warranty_date))
     if @computer.save
       redirect_to action: "show", id: @computer.id
     else
@@ -48,8 +49,9 @@ class ComputersController < ApplicationController
     @computer = Computer.find(params[:id])
     params_for_update = params.permit(:name, :user_id, :os, :notes, :deployment_date, :verification_date)
     # Seriously? The only way to fix these dates before sending them to update action is to open my params_for_update hash back up?
-    params_for_update["deployment_date"] = Date.civil(params[:deployment_date][:year].to_i, params[:deployment_date][:month].to_i, params[:deployment_date][:day].to_i)
-    params_for_update["verification_date"] = Date.civil(params[:verification_date][:year].to_i, params[:verification_date][:month].to_i, params[:verification_date][:day].to_i)
+    params_for_update["deployment_date"] = params_to_date(params,:deployment_date)
+    params_for_update["verification_date"] = params_to_date(params,:verification_date)
+    params_for_update["warranty_date"] = params_to_date(params,:warranty_date)
     @computer.update_attributes(params_for_update)
     redirect_to action: "show", id: @computer.id
   end
@@ -59,5 +61,11 @@ class ComputersController < ApplicationController
     if @computer.destroy
       redirect_to action: "index"
     end
+  end
+
+  private
+  #Takes a params hash and a symbol for the name of the key you want to pull a date value out of.
+  def params_to_date(params,key)
+    date = Date.civil(params[key][:year].to_i, params[key][:month].to_i, params[key][:day].to_i)
   end
 end

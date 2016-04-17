@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get '/users/create',         to: 'users#create'
   get '/users/destroy',        to: 'users#destroy'
   get '/users/:id',            to: 'users#show'
+  #Root
+  root                         to: 'computers#index'
 end

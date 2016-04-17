@@ -40,7 +40,7 @@
   <tr>
     <td>
       <strong>Deployment Date</strong>
-	</td>
+	  </td>
 	<td>
 	  <%= @computer.deployment_date %>
 	</td>
@@ -52,6 +52,14 @@
 	<td>
 	  <%= @computer.verification_date %>
 	</td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Warranty Expiration Date</strong>
+    </td>
+    <td>
+      <%= @computer.warranty_date %>
+    </td>
   </tr>
 </table>
 <%= link_to 'Delete Computer',  { action: :destroy, id: @computer.id }, class: 'btn btn-default' %>
