@@ -35,14 +35,20 @@
         <%= computer.verification_date%>
       </td>
       <%# I want computers with expired warranties to be highlighted in red. %>
-      <% if computer.warranty_date.past? %>
-        <td class="out_of_warranty">
-          <%= computer.warranty_date%> (Expired)
+      <% if computer.warranty_date == nil %>
+        <td>
+          (no warranty expiration date!)
         </td>
       <% else %>
-        <td>
-          <%= computer.warranty_date%>
-        </td>
+        <% if computer.warranty_date.past? %>
+          <td class="out_of_warranty">
+            <%= computer.warranty_date%> (Expired)
+          </td>
+        <% else %>
+          <td>
+            <%= computer.warranty_date%>
+          </td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>

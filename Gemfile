@@ -8,10 +8,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'pg'
+gem 'puma'
+gem 'rails_12factor'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug'
 end
 
@@ -20,8 +22,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
-  gem 'puma'
+  #
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
