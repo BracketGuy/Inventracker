@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get '/users/destroy',        to: 'users#destroy'
   get '/users/:id',            to: 'users#show'
   #Root
-  root                         to: 'computers#index'
+  #root                         to: 'computers#index'
+  root                         to: 'dashboard#index'
 end

@@ -11,6 +11,7 @@
       <h1>Inventory Tracker</h1>
         <nav>
           <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home", url_for(action: 'index', controller: 'dashboard') %></li>
             <li><%= link_to "Computers", computers_path %></li>
             <li><%= link_to "Users", users_path %></li>
             <li></li>
