@@ -1,0 +1,28 @@
+<table  class="table table-striped table-bordered">
+  <tr>
+    <th>
+      Site Name
+    </th>
+    <th>
+      POC Name
+    </th>
+    <th>
+      POC Phone Number
+    </th>
+  </tr>
+  <% @sites.each do |site| %>
+    <tr>
+      <td>
+        <%= link_to site.name, controller: "sites", action: "show", id: site %>
+      </td>
+      <td>
+        <%= site.poc_name %>
+      </td>
+      <td>
+        <%= site.poc_phone%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</br>
+<%= link_to "Add New Site", {:controller => "sites", :action => "new"}, {:class => "btn btn-default"} %>

@@ -1,0 +1,31 @@
+<h1>Site: <%= @site.name %></h1>
+</br>
+<table class="table table-striped table-bordered">
+  <tr>
+    <td>
+      <strong>Site Name</strong>
+	</td>
+	<td>
+	  <%= @site.name %>
+	</td>
+  </tr>
+  <tr>
+	<td>
+      <strong>POC Name</strong>
+	</td>
+	<td>
+	  <%= @site.poc_name %>
+	</td>
+  </tr>
+  <tr>
+	<td>
+      <strong>POC Phone Number</strong>
+	</td>
+	<td>
+	  <%= @site.poc_phone %>
+	</td>
+  </tr>
+</table>
+<%= link_to 'Delete Site',  { action: :destroy, id: @site.id }, class: 'btn btn-default' %>
+<%= link_to 'Edit Site',  { action: :edit, id: @site.id }, class: 'btn btn-default' %>
+<%= link_to 'Show All Sites',  { action: :index }, class: 'btn btn-default' %>

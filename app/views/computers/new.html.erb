@@ -9,6 +9,10 @@
      <%= select_tag 'user_id', options_from_collection_for_select(@users, 'id', 'full_name'), class: 'form-control' %>
    </div>
    <div class="form-group">
+     <%= label_tag 'site_id', 'Location:' %>
+     <%= select_tag 'site_id', options_from_collection_for_select(@sites, 'id', 'name'), class: 'form-control' %>
+   </div>
+   <div class="form-group">
      <%= label_tag 'os', 'Operating System:' %>
      <%= select_tag 'os', options_for_select([['Windows 7', 'Windows 7'],
                                               ['Windows Server 2008 R2', 'Windows Server 2008 R2'],

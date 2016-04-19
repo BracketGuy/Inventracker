@@ -1,0 +1,16 @@
+<h1>Edit Site</h1>
+<%= form_tag({:action => 'update', :controller => 'sites'}, {:role => 'form', :method => 'get'}) do %>
+   <div class="form-group">
+     <%= label_tag 'name', 'Site Name:' %>
+     <%= text_field_tag 'name', @site.name, class: 'form-control' %>
+   </div>
+   <div class="form-group">
+     <%= label_tag 'poc_name', 'POC Name:' %>
+     <%= text_field_tag 'poc_name', @site.poc_name, class: 'form-control' %>
+   </div>
+   <div class="form-group">
+     <%= label_tag 'poc_phone', 'Email Adress/Account:' %>
+     <%= text_field_tag 'poc_phone', @site.poc_phone, class: 'form-control' %>
+   </div>
+   <%= submit_tag "Save", class: 'btn btn-default' %>
+<% end %>

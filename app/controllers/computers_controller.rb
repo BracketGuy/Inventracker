@@ -18,16 +18,31 @@ class ComputersController < ApplicationController
         end
       end
     end
+    unless @computer.site_id == nil
+      begin
+        @site = Site.find(@computer.site_id)
+      rescue ActiveRecord::RecordNotFound
+        @site = Object.new
+        def @site.name
+          "Site not found!"
+        end
+        def @site.id
+          nil
+        end
+      end
+    end
   end
 
   def new
     @computer = Computer.new
     @users = User.all
+    @sites = Site.all
   end
 
   def create
     @computer = Computer.new(name: params[:name],
                              user_id: params[:user_id],
+                             site_id: params[:site_id],
                              os: params[:os],
                              notes: params[:notes],
                              deployment_date: params_to_date(params,:deployment_date),
@@ -43,11 +58,12 @@ class ComputersController < ApplicationController
   def edit
     @computer = Computer.find(params[:id])
     @users = User.all
+    @sites = Site.all
   end
 
   def update
     @computer = Computer.find(params[:id])
-    params_for_update = params.permit(:name, :user_id, :os, :notes, :deployment_date, :verification_date)
+    params_for_update = params.permit(:name, :user_id, :site_id, :os, :notes, :deployment_date, :verification_date)
     # Seriously? The only way to fix these dates before sending them to update action is to open my params_for_update hash back up?
     params_for_update["deployment_date"] = params_to_date(params,:deployment_date)
     params_for_update["verification_date"] = params_to_date(params,:verification_date)

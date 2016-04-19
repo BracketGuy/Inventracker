@@ -4,3 +4,4 @@ Computer.create(name: "USTVC-FS1", user_id: 1, os: "Windows 7", notes: "This com
                 deployment_date: Date.civil(1970, 1, 1),
                 verification_date: Date.civil(2015, 2, 14),
                 warranty_date: Date.civil(2013, 7, 3))
+Site.create(name: "TVC", poc_name: "Marcus McDuffie", poc_phone: "1-(231)-346-6611")

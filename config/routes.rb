@@ -15,7 +15,14 @@ Rails.application.routes.draw do
   get '/users/:id',            to: 'users#show'
   get '/users/:id/edit',       to: 'users#edit'
   get '/users/:id/update',     to: 'users#update'
+  #Site
+  get '/sites',                to: 'sites#index'
+  get '/sites/new',            to: 'sites#new'
+  get '/sites/create',         to: 'sites#create'
+  get '/sites/destroy',        to: 'sites#destroy'
+  get '/sites/:id',            to: 'sites#show'
+  get '/sites/:id/edit',       to: 'sites#edit'
+  get '/sites/:id/update',     to: 'sites#update'
   #Root
-  #root                         to: 'computers#index'
   root                         to: 'dashboard#index'
 end

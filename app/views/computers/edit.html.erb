@@ -9,6 +9,10 @@
      <%= select_tag 'user_id', options_from_collection_for_select(@users, 'id', 'full_name', @computer.user_id), class: 'form-control' %>
    </div>
    <div class="form-group">
+     <%= label_tag 'site_id', 'Location:' %>
+     <%= select_tag 'site_id', options_from_collection_for_select(@sites, 'id', 'name', @computer.site_id), class: 'form-control' %>
+   </div>
+   <div class="form-group">
      <%= label_tag 'os', 'Operating System:' %>
      <%= select_tag 'os', options_for_select([['Windows 7', 'Windows 7'],
                                               ['Windows Server 2008 R2', 'Windows Server 2008 R2'],
@@ -31,5 +35,5 @@
      <%= label_tag 'warranty_date', 'Warranty Expiration Date:' %>
      <%= select_date @computer.warranty_date, prefix: :warranty_date %>
    </div>
-   <%= submit_tag "Update", class: 'btn btn-default' %>
+   <%= submit_tag "Save", class: 'btn btn-default' %>
 <% end %>
