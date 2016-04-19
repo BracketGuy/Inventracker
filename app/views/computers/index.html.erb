@@ -28,9 +28,15 @@
           <%= link_to computer.name, controller: "computers", action: "show", id: computer %>
         <% end %>
       </td>
-      <td>
-        <%= computer.site.name %>
-      </td>
+      <% if computer.site == nil %>
+        <td>
+          (No site defined!)
+        </td>
+      <% else %>
+        <td>
+          <%= computer.site.name %>
+        </td>
+      <% end %>
       <td>
         <%= computer.os %>
       </td>
