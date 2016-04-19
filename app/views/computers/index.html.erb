@@ -4,6 +4,9 @@
       Computer Name
     </th>
     <th>
+      Location
+    </th>
+    <th>
       Operating System
     </th>
     <th>
@@ -24,6 +27,9 @@
         <% else %>
           <%= link_to computer.name, controller: "computers", action: "show", id: computer %>
         <% end %>
+      </td>
+      <td>
+        <%= computer.site.name %>
       </td>
       <td>
         <%= computer.os %>
