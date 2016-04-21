@@ -1,9 +1,13 @@
 require 'test_helper'
 
 class ComputersControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+  def setup
+    @computer = Computer.new(name: "test_computer")
+    @computer.save
   end
 
+  test "should get show" do
+    get :show, :id => @computer.id
+    assert_response :success
+  end
 end
