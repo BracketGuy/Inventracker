@@ -22,21 +22,11 @@
   <% @computers.each do |computer| %>
     <tr>
       <td>
-        <% if computer.name == "" %>
-          <%= link_to '(not named)', controller: "computers", action: "show", id: computer %>
-        <% else %>
-          <%= link_to computer.name, controller: "computers", action: "show", id: computer %>
-        <% end %>
+        <%= conditional_link computer, :name, "(not named)" %>
       </td>
-      <% if computer.site == nil %>
-        <td>
-          (No site defined!)
-        </td>
-      <% else %>
-        <td>
-          <%= computer.site.name %>
-        </td>
-      <% end %>
+      <td>
+        <%= if !computer.site.nil? then computer.site.name else "(No site defined!)" end %>
+      </td>
       <td>
         <%= computer.os %>
       </td>
